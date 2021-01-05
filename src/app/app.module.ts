@@ -9,9 +9,10 @@ import { EditworkerComponent } from './editworker/editworker.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TextMaskModule } from 'angular2-text-mask';
 import { HttpClientModule } from '@angular/common/http';
+import { SearchPipe } from './shared/pipes/search.pipe';
 
 @NgModule({
-  declarations: [AppComponent, TableWorkersComponent, AddformWorkerComponent, EditworkerComponent],
+  declarations: [AppComponent, TableWorkersComponent, AddformWorkerComponent, EditworkerComponent, SearchPipe],
   imports: [
     BrowserModule,
     FormsModule,

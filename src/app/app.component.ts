@@ -22,6 +22,7 @@ export class AppComponent {
     phone: '',
     type: 1
   };
+  searchStr = '';
 
   constructor(
     private httpProductService: HttpWorkerService
