@@ -1,0 +1,41 @@
+<div id="popup" class="popup">
+  <div class="popup__body">
+    <div class="popup__content">
+      <div (click)="closeEdit()" class="popup__close">X</div>
+      <form [formGroup]="EditForm" (ngSubmit)="onEditWorker()">
+        <label for="name">Имя:</label>
+        <br />
+        <input type="text" id="name" formControlName="workerName">
+        <br />
+        <div class="alert alert-danger"
+          *ngIf="EditForm.controls['workerName'].invalid && EditForm.controls['workerName'].touched">
+          Не указано имя <br>
+        </div>
+        <label for="surname">Фамилия:</label>
+        <br />
+        <input type="text" id="surname" formControlName="workerSurname">
+        <br />
+        <div class="alert alert-danger"
+          *ngIf="EditForm.controls['workerSurname'].invalid && EditForm.controls['workerSurname'].touched">
+          Не указана фамилия <br>
+        </div>
+        <label for="phone">Телефон:</label>
+        <br />
+        <input type="text" id="phone" [textMask]="{mask: mask}" formControlName="workerPhone" /><br>
+        <div class="alert alert-danger"
+          *ngIf="EditForm.controls['workerPhone'].invalid && EditForm.controls['workerPhone'].touched">
+          Телефон не указан или указан неверно.
+          <br> Пример: <b>+7 (900) 111-22-33</b><br>
+        </div>
+        <select class="mt-3 mb-3 custom-select" formControlName="workerType">
+          <option [ngValue]="myWorkerType.programmer">Программист</option>
+          <option [ngValue]="myWorkerType.designer">Дизайнер</option>
+          <option [ngValue]="myWorkerType.copywriter">Рекламщик</option>
+          <option [ngValue]="myWorkerType.manager">Менеджер</option>
+        </select>
+        <br />
+        <button class="btn btn-outline-primary btn-sm" type="submit" [disabled]="EditForm.invalid">Сохранить</button>
+      </form>
+    </div>
+  </div>
+</div>

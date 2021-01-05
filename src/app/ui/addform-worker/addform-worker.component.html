@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row mb-3">
+    <div class="col-12">
+      <h5>Добавить сотрудника</h5>
+    </div>
+    <form [formGroup]="AddForm" (ngSubmit)="onAddWorker()">
+      <div class="col-12">
+        <input class="form-control" type="text" placeholder="Имя" formControlName="workerName" />
+      </div>
+      <div class="alert alert-danger"
+        *ngIf="AddForm.controls['workerName'].invalid && AddForm.controls['workerName'].touched">
+        Не указано имя
+      </div>
+      <div class="col-12">
+        <input class="form-control" type="text" placeholder="Фамилия" formControlName="workerSurname" />
+      </div>
+      <div class="alert alert-danger"
+        *ngIf="AddForm.controls['workerSurname'].invalid && AddForm.controls['workerSurname'].touched">
+        Не указана фамилия
+      </div>
+      <div class="col-12">
+        <input [textMask]="{mask: mask}" class="form-control" type="text" placeholder="Телефон" formControlName="workerPhone" />
+      </div>
+      <div class="alert alert-danger"
+        *ngIf="AddForm.controls['workerPhone'].invalid && AddForm.controls['workerPhone'].touched">
+        Телефон не указан или указан неверно.
+        <br> Пример: <b>+7 (900) 111-22-33</b>
+      </div>
+      <div class="col-12">
+        <select class="custom-select" formControlName="workerType">
+          <option [ngValue]="myWorkerType.programmer">Программист</option>
+          <option [ngValue]="myWorkerType.designer">Дизайнер</option>
+          <option [ngValue]="myWorkerType.copywriter">Рекламщик</option>
+          <option [ngValue]="myWorkerType.manager">Менеджер</option>
+        </select>
+      </div>
+      <div class="col-12 mt-1">
+        <button class="btn btn-outline-primary btn-sm" type="submit" [disabled]="AddForm.invalid">Добавить</button>
+      </div>
+    </form>
+  </div>
+</div>
